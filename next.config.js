@@ -4,8 +4,10 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  experimental: {
+    appDir: true,
+  },
   output: "export",
-  assetPrefix: "/nextjs13.3",
 };
 
 module.exports = nextConfig;
