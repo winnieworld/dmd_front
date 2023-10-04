@@ -1,0 +1,29 @@
+{
+  "name": "new_dmd",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@nextcss/reset": "^0.2.4-beta",
+    "axios": "^1.5.1",
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-responsive": "^9.0.2",
+    "styled-components": "^6.0.8",
+    "styled-reset": "^4.5.1"
+  },
+  "devDependencies": {
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "eslint": "latest",
+    "eslint-config-next": "latest",
+    "typescript": "latest"
+  }
+}
