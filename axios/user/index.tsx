@@ -2,7 +2,8 @@ import axios, { AxiosError } from "axios";
 import { joinType, loginType } from "@/Types/index";
 
 const client = axios.create({
-  baseURL: "http://localhost:3000",
+  // baseURL: "http://localhost:3000",
+  baseURL: "https://api.dearmydiary.com",
 });
 export const join = async (info: joinType) => {
   try {
