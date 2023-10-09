@@ -24,11 +24,7 @@ export type LayoutType = React.PropsWithChildren & {
 export interface FeedInfoType {
   id: number;
   nickName: string;
-  description: string;
-  liked: boolean;
-  booked: boolean;
-  likeNum: number;
+  content: string;
   time: string;
-  profileImg: string;
   img: string;
 }

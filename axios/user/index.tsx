@@ -7,7 +7,7 @@ const client = axios.create({
 });
 export const join = async (info: joinType) => {
   try {
-    const response = await client.post("/api/user/signup", { ...info });
+    const response = await client.post("/user/signup", { ...info });
     return response.status;
   } catch (error) {
     const e = error as AxiosError;
@@ -17,7 +17,7 @@ export const join = async (info: joinType) => {
 };
 export const login = async (info: loginType) => {
   try {
-    const response = await client.post("/api/auth/login", { ...info });
+    const response = await client.post("/auth/login", { ...info });
     return response;
   } catch (error) {
     const e = error as AxiosError;

@@ -1,11 +1,13 @@
 import { useRouter } from "next/navigation";
 import styled from "styled-components";
 import { HeaderName, MaxSize } from "@/styles/base";
+import { useAuthRedirect } from "@/hooks/useAuthRedirect";
 import { LayoutType } from "@/Types/index";
 
 const HeadMeta = ({ children, menu }: LayoutType) => {
   const router = useRouter();
 
+  useAuthRedirect();
   return (
     <MaxSize>
       <RelativeContainer>
@@ -19,7 +21,6 @@ const HeadMeta = ({ children, menu }: LayoutType) => {
               />
             )}
             {menu === "explore" && <HeaderName>추천</HeaderName>}
-            {menu === "create" && <HeaderName>새 게시글</HeaderName>}
             {/* {menu !== "store" && (
               <div>
                 <svg
@@ -51,7 +52,11 @@ const HeadMeta = ({ children, menu }: LayoutType) => {
             )} */}
           </Header>
         )}
-        <Container>{children}</Container>
+        {menu === "create" || menu === "myPage" ? (
+          <>{children}</>
+        ) : (
+          <Container>{children}</Container>
+        )}
         <BottomMenu>
           <svg
             width="24"
@@ -131,7 +136,6 @@ const HeadMeta = ({ children, menu }: LayoutType) => {
             />
           </svg>
           <ProfileBox
-            src="/baseProfile.png"
             onClick={() => {
               router.push(`/myPage`);
             }}
@@ -143,7 +147,7 @@ const HeadMeta = ({ children, menu }: LayoutType) => {
   );
 };
 
-const ProfileBox = styled.img`
+const ProfileBox = styled.div`
   background: #d9d9d9;
   width: 24px;
   height: 24px;

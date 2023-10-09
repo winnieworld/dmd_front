@@ -24,6 +24,7 @@ export const MaxSize = styled.div`
   max-width: 978px;
   height: 100%;
   margin: 0 auto;
+  position: relative;
 `;
 
 // layout

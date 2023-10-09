@@ -1,6 +1,6 @@
 "use client";
 import { login } from "@/axios/user/index";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useRouter } from "next/navigation";
 import { BoldNomalText, loadEffect, Center } from "../../../styles/base";
@@ -14,8 +14,22 @@ const LoginBox = () => {
   const router = useRouter();
   const [error, setError] = useState<string>("");
 
+  const onSubmit = async (e: React.FormEvent) => {
+    e?.preventDefault();
+    const response = login({ email, password: pw });
+    response.then(({ data, status }: any) => {
+      if (status === 201) {
+        sessionStorage.setItem("access", data.access_token);
+        router.push("/home");
+      } else {
+        console.log(data);
+        setError(data.message.includes("ID") ? "email" : "pw");
+      }
+    });
+  };
+
   return (
-    <Container>
+    <Container onSubmit={onSubmit}>
       <Input
         value={email}
         onChange={(e) => setEmail(e.target.value)}
@@ -32,18 +46,7 @@ const LoginBox = () => {
       />
 
       <Button
-        onClick={(e) => {
-          const response = login({ email, password: pw });
-          response.then(({ data, status }: any) => {
-            if (status === 201) {
-              console.log(data.access_token);
-              router.push("/home");
-            } else {
-              console.log(data);
-              setError(data.message.includes("ID") ? "email" : "pw");
-            }
-          });
-        }}
+        onSubmit={onSubmit}
         disabled={!(emailReg.test(email) && pw.length > 9)}
         margin="40px 0 24px"
       >
@@ -56,7 +59,7 @@ const LoginBox = () => {
     </Container>
   );
 };
-const Container = styled.div`
+const Container = styled.form`
   opercity: 0;
   width: 100%;
   box-sizing: border-box;

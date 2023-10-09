@@ -14,7 +14,7 @@ const Feed: React.FC<Props> = ({ feeds }) => {
         <div style={{ marginTop: idx === 0 ? "0" : "12px" }}>
           <FeedFlex>
             <FlexBox>
-              <ProfileImg src={feed.profileImg || "/baseProfile.png"} />
+              <ProfileImg />
               <FeedNickName>{feed.nickName}</FeedNickName>
             </FlexBox>
             {/* 다음버전
@@ -93,7 +93,7 @@ const Feed: React.FC<Props> = ({ feeds }) => {
             {/* <LikeNum>{`좋아요 ${feed.likeNum}개`}</LikeNum> */}
             <FlexBox>
               <ContentNickName>{feed.nickName}</ContentNickName>
-              <Discription>{feed.description}</Discription>
+              <Discription>{feed.content}</Discription>
             </FlexBox>
             <Time>{feed.time}</Time>
           </Content>
@@ -118,7 +118,7 @@ const Time = styled.div`
   line-height: 20px;
 `;
 
-const ProfileImg = styled.img`
+const ProfileImg = styled.div`
   width: 36px;
   height: 36px;
   border-radius: 50%;

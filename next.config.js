@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   styledComponents: true,
+  reactStrictMode: false,
+
   images: {
     unoptimized: true,
   },

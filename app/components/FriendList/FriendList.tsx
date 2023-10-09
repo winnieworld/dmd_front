@@ -19,7 +19,7 @@ const FriendsList: React.FC<Props> = ({ Friends, ...props }) => {
   return (
     <FlexBox>
       <ProfileBox>
-        <ProfileImg src="/baseProfile.png" />
+        <ProfileImg />
         <ProfileName>내스토리</ProfileName>
       </ProfileBox>
       {Friends?.map((data: FrandType, idx: number) => {
@@ -30,7 +30,7 @@ const FriendsList: React.FC<Props> = ({ Friends, ...props }) => {
             }}
             style={{ marginRight: Friends.length - 1 === idx ? "0px" : "12px" }}
           >
-            <ProfileImg src={data.img || "/baseProfile.png"} />
+            <ProfileImg />
             <ProfileName>{data.nickName}</ProfileName>
           </ProfileBox>
         );
@@ -56,7 +56,7 @@ const ProfileBox = styled.div`
   margin-right: 12px;
 `;
 
-const ProfileImg = styled.img`
+const ProfileImg = styled.div`
   width: 64px;
   height: 64px;
   border-radius: 50%;

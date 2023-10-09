@@ -15,7 +15,8 @@ interface ButtonStyledProps {
 }
 
 interface Props extends StyledProps, ButtonStyledProps {
-  onClick: (ev: MouseEvent<HTMLElement>) => void;
+  onClick?: (ev: MouseEvent<HTMLElement>) => void;
+  onSubmit?: (e: React.FormEvent) => void;
   disabled: boolean;
   children: string;
 }
@@ -29,6 +30,7 @@ const Button: React.FC<Props> = ({ onClick, disabled, ...props }) => {
     <ButtonCoverStyled width={props.width} margin={props.margin}>
       <ButtonStyled
         onClick={clickHandler}
+        onSubmit={props.onSubmit}
         disabled={disabled}
         IsWhite={props.IsWhite}
         padding={props.padding}
