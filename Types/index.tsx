@@ -24,7 +24,8 @@ export type LayoutType = React.PropsWithChildren & {
 export interface FeedInfoType {
   id: number;
   nickName: string;
-  content: string;
-  time: string;
-  img: string;
+  contents: string;
+  title: string;
+  imageUrl: string;
+  updated_at: string;
 }

@@ -36,7 +36,7 @@ const useAxiosWithAuth = (): AxiosInstance => {
       if (statusCode === 401) {
         error.response.statusText = "Unauthorized";
         error.response.status = 401;
-        window.location.href = "/";
+        window.location.href = "/login";
       }
       return Promise.reject(error);
     }

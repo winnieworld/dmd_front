@@ -32,7 +32,7 @@ const Feed: React.FC<Props> = ({ feeds }) => {
             </svg> */}
           </FeedFlex>
           <Background>
-            <FeedImg src="https://mblogthumb-phinf.pstatic.net/MjAyMTAzMDFfNjUg/MDAxNjE0NTI4ODc2NzQ0.pWSoz-Jz0w_oGaU0CGeY5ft44-JR0-imABKI8c75HZUg.TzCOn_c2cG2Z_Ih5q1hT9tNMozqbha7PYXK0NyMUObog.JPEG.qkrchdud5/output_2772876332.jpg?type=w800"></FeedImg>
+            <FeedImg src={feed.imageUrl}></FeedImg>
           </Background>
           {/* 다음 버전 */}
           {/* <FeedFlex style={{ margin: "4px 0" }}>
@@ -93,9 +93,9 @@ const Feed: React.FC<Props> = ({ feeds }) => {
             {/* <LikeNum>{`좋아요 ${feed.likeNum}개`}</LikeNum> */}
             <FlexBox>
               <ContentNickName>{feed.nickName}</ContentNickName>
-              <Discription>{feed.content}</Discription>
+              <Discription>{feed.contents}</Discription>
             </FlexBox>
-            <Time>{feed.time}</Time>
+            <Time>{feed.updated_at}</Time>
           </Content>
         </div>
       ))}

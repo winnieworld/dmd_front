@@ -41,21 +41,9 @@ const FileLoader = () => {
   const makeBoard = () => {
     const formData = new FormData();
 
-    images.forEach((image) => {
-      formData.append("files", image);
-    });
-    formData.append(
-      "request",
-      new Blob(
-        [
-          JSON.stringify({
-            title,
-            contents,
-          }),
-        ],
-        { type: "application/json" }
-      )
-    );
+    formData.append("files", images[0][0]);
+    formData.append("request", `{"title":"${title}","contents":"${contents}"}`);
+
     const res = createBoard(formData);
     res.then((info) => {
       if (info.code !== 200) console.log(info.message);
@@ -83,7 +71,9 @@ const FileLoader = () => {
 
   return (
     <div>
-      <AbsoluteIcon onClick={makeBoard}>등록</AbsoluteIcon>
+      <AbsoluteIcon onClick={makeBoard} style={{ right: "16px", top: "14px" }}>
+        등록
+      </AbsoluteIcon>
       <div style={{ flex: 1 }}>
         {!showImages.length ? (
           <ImgBox className="input-file-button" htmlFor="input-file">
@@ -198,8 +188,8 @@ const Image = styled.img`
 `;
 const AbsoluteIcon = styled.button`
   position: absolute;
-  right: 16px;
-  top: 14px;
+  right: -14px;
+  top: -14px;
   color: #6f85a8;
   font-family: Pretendard;
   font-size: 16px;

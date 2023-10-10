@@ -6,6 +6,8 @@ import styled from "styled-components";
 import FriendsList from "../components/FriendList/FriendList";
 import Feed from "../components/\bFeed/Feed";
 import { Scroll } from "@/styles/base";
+import { useEffect, useState } from "react";
+import { getBoards } from "@/axios/boards";
 
 const Container = styled.div`
   height: 100%;
@@ -47,11 +49,20 @@ const feedsMock = [
   },
 ];
 const Home: NextPage = () => {
+  const [feeds, setFeeds] = useState([]);
+
+  useEffect(() => {
+    const result = getBoards();
+    result.then((data) => {
+      setFeeds(data.data);
+    });
+  }, []);
+
   return (
     <Layout menu="home">
       <Scroll>
         <FriendsList Friends={friendListMock} />
-        <Feed feeds={feedsMock} />
+        <Feed feeds={feeds} />
       </Scroll>
     </Layout>
   );
