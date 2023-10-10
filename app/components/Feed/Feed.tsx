@@ -115,7 +115,7 @@ const Feed: React.FC<Props> = ({ feeds }) => {
           <div style={{ width: "100%", height: "12px" }} />
           <Content>
             {/* <LikeNum>{`좋아요 ${feed.likeNum}개`}</LikeNum> */}
-            <FlexBox>
+            <FlexBox style={{ alignItems: "start" }}>
               <ContentNickName>{feed.nickName}</ContentNickName>
               <Discription>{feed.contents}</Discription>
             </FlexBox>
