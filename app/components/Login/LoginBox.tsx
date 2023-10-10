@@ -22,7 +22,6 @@ const LoginBox = () => {
         sessionStorage.setItem("access", data.access_token);
         router.push("/home");
       } else {
-        console.log(data);
         setError(data.message.includes("ID") ? "email" : "pw");
       }
     });

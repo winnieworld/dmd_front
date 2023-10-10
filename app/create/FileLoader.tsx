@@ -3,7 +3,8 @@ import { ChangeEvent, useState } from "react";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 import { createBoard } from "../../axios/boards/index";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
+
 import styled from "styled-components";
 
 interface filesType {
@@ -17,6 +18,8 @@ const FileLoader = () => {
   const [title, setTitle] = useState<string>("");
   const [contents, setContents] = useState<string>("");
   // 이미지 상대경로 저장
+  const router = useRouter();
+
   const handleAddImages = (event: any) => {
     const imageLists = event.target.files;
     if (event.target.files.length > 1) {
@@ -46,9 +49,11 @@ const FileLoader = () => {
 
     const res = createBoard(formData);
     res.then((info) => {
-      if (info.code !== 200) console.log(info.message);
-      else {
-        console.log(info);
+      if (info.status === 201) {
+        alert("게시글이 등록되었어요!");
+        router.push("/home");
+      } else {
+        alert("게시글이 등록에 실패하였어요 ㅜ");
       }
     });
   };

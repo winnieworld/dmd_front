@@ -9,7 +9,7 @@ export const createBoard = async (formData: any) => {
         "Content-Type": "multipart/form-data",
       },
     });
-    return response.data;
+    return response;
   } catch (error: any) {
     console.log(error);
     // alert('다시 시도해주세요');

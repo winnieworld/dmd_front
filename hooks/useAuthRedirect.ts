@@ -4,7 +4,6 @@ import { useEffect } from "react";
 
 export const useAuthRedirect = () => {
   const navigate = useRouter();
-  console.log("a");
   const access =
     typeof window !== "undefined" ? sessionStorage.getItem("access") : null;
 
