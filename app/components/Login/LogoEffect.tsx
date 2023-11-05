@@ -28,11 +28,13 @@ const LogoEffect = ({ ...props }) => {
     <Container>
       {props.seconds < 1 ? (
         <FadeEffect>
-          <img src={"/assets/logo_long.svg"} alt="logo" />
+          <Background style={{ width: "226px", height: "40px" }} />
         </FadeEffect>
       ) : (
         <LodadEffect>
-          <img src={"/assets/logo.svg"} alt="logo" />
+          <div>
+            <img src={"/assets/logo.svg"} alt="logo" />
+          </div>
         </LodadEffect>
       )}
     </Container>
@@ -40,7 +42,7 @@ const LogoEffect = ({ ...props }) => {
     <ContainerEffect>
       {props.seconds < 1 ? (
         <FadeEffect>
-          <img src={"/assets/logo_long.svg"} alt="Deer My Diary" />
+          <Background style={{ width: "226px", height: "40px" }} />
         </FadeEffect>
       ) : (
         <LodadEffect>
@@ -56,6 +58,11 @@ const Container = styled.div`
   align-items: center;
   transform: translate(0, -100px);
   flex: 1;
+`;
+
+const Background = styled.div`
+  background-image: url("/assets/logo_long.svg");
+  background-size: contain;
 `;
 
 const ContainerEffect = styled.div`
